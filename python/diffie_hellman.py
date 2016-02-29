@@ -1,5 +1,5 @@
-from math import sqrt
 from random import random
+from primes import get_prime
 import md5
 
 
@@ -7,21 +7,6 @@ import md5
 implimentation of diffie-helmann key exchange based on code found http://www.securityfocus.com/blogs/267
 
 """
-def is_prime(n):
-    for i in range(3, int(sqrt(n)) + 1, 2):
-        if n % i == 0:
-            return False
-    return True
-
-
-def get_primes(n):
-    return [i for i in range(3, n, 2) if is_prime(i)]
-
-
-def get_prime(limit):
-    primes = get_primes(limit)
-    return primes[int(len(primes) * random())]
-
 
 def is_primitive_root(n, prime):
     return len(list(set([n**i % prime for i in range(prime-1)]))) == prime-1
@@ -64,5 +49,3 @@ def get_aes_key(dh):
     key = md5.new()
     key.update(str(get_session_key(dh)))
     return "0x" + key.digest()
-
-

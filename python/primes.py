@@ -1,4 +1,5 @@
 from math import sqrt
+from random import random
 
 def is_prime(n):
     for i in range(3, int(sqrt(n)) + 1, 2):
